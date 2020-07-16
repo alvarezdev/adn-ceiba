@@ -1,8 +1,10 @@
-package ceiba.adn.parking;
+package ceiba.adn.parking.presentations;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import ceiba.adn.parking.R;
 
 public class MainActivity extends AppCompatActivity {
 
