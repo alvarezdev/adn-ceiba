@@ -6,11 +6,11 @@ import ceiba.adn.parking.enums.VehicleType;
 
 public class VehicleDto {
 
-    public String plate;
-    public VehicleType vehicleType;
-    public double cylinderCapacity;
-    public Date vehicleEntryTime;
-    public Date vehicleDepartureTime;
+    private String plate;
+    private VehicleType vehicleType;
+    private double cylinderCapacity;
+    private Date vehicleEntryTime;
+    private Date vehicleDepartureTime;
 
     public String getPlate() {
         return plate;

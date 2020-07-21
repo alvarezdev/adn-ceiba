@@ -7,18 +7,18 @@ import ceiba.adn.parking.enums.VehicleType;
 
 public class VehicleModel {
 
-    public String plate;
-    public VehicleType vehicleType;
-    public double cylinderCapacity;
-    public Date vehicleEntryTime;
-    public Date vehicleDepartureTime;
+    private String plate;
+    private VehicleType vehicleType;
+    private double cylinderCapacity;
+    private Date vehicleEntryTime;
+    private Date vehicleDepartureTime;
 
     public VehicleModel(VehicleDto vehicleDto) {
         this.plate = vehicleDto.getPlate();
-        this.vehicleType = vehicleDto.vehicleType;
-        this.cylinderCapacity = vehicleDto.cylinderCapacity;
-        this.vehicleEntryTime = vehicleDto.vehicleEntryTime;
-        this.vehicleDepartureTime = vehicleDto.vehicleDepartureTime;
+        this.vehicleType = vehicleDto.getVehicleType();
+        this.cylinderCapacity = vehicleDto.getCylinderCapacity();
+        this.vehicleEntryTime = vehicleDto.getVehicleEntryTime();
+        this.vehicleDepartureTime = vehicleDto.getVehicleDepartureTime();
     }
 
     public String getPlate() {

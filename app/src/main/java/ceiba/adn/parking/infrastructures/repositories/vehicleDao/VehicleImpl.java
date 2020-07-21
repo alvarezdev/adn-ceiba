@@ -4,9 +4,10 @@ import java.util.List;
 
 import ceiba.adn.parking.dtos.VehicleDto;
 
-public interface IVehicleDao {
+public interface VehicleImpl {
     void addVehicle(VehicleDto vehicleDto);
-    List<VehicleDto> GetListVehicle();
+    VehicleDto getVehicle(String plate);
+    List<VehicleDto> getListVehicle();
     void deleteVehicle(VehicleDto vehicleDto);
     void deleteAll();
 }

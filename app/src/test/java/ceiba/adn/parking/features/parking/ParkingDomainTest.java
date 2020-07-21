@@ -1,27 +1,31 @@
 package ceiba.adn.parking.features.parking;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
 import java.util.List;
 
-import ceiba.adn.parking.domains.services.ParkingDomainService;
+import javax.inject.Inject;
+
+import ceiba.adn.parking.domains.features.parking.ParkingDomain;
 import ceiba.adn.parking.dtos.VehicleDto;
 import ceiba.adn.parking.enums.VehicleType;
 
-
 public class ParkingDomainTest {
 
-    ParkingDomainService parkingDomainService;
+    @Inject
+    public ParkingDomain parkingDomain;
 
-    public ParkingDomainTest() {
-        parkingDomainService = new ParkingDomainService();
-        parkingDomainService.deleteAll();
+    @Before
+    public void setUp() {
+        parkingDomain = new ParkingDomain();
+        parkingDomain.deleteAll();
     }
 
     @Test
-    public void enterParkingTest() {
+    public void enterVehicleInParkingSucessfulTest() {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("FIS100");
@@ -30,32 +34,63 @@ public class ParkingDomainTest {
         vehicleDto.setVehicleEntryTime(new Date());
 
         //Act
-        parkingDomainService.enterParking(vehicleDto);
+        parkingDomain.enterParking(vehicleDto);
 
         //Assert
-        List<VehicleDto> listVehicle = parkingDomainService.getListVehicle();
-        VehicleDto vehicle = listVehicle.stream().filter(v -> v.getPlate().equals("FIS100")).findFirst().get();
+        List<VehicleDto> list = parkingDomain.getListVehicle();
+        VehicleDto vehicle = list.stream().filter(v -> v.getPlate().equals("FIS100")).findFirst().get();
         Assert.assertEquals(vehicleDto.getPlate(),vehicle.getPlate());
-        Assert.assertEquals(vehicleDto.getVehicleDepartureTime(),vehicle.getVehicleDepartureTime());
-        Assert.assertEquals(vehicleDto.getCylinderCapacity(),vehicle.getCylinderCapacity());
-        Assert.assertEquals(vehicleDto.getVehicleEntryTime(),vehicle.getVehicleEntryTime());
     }
 
     @Test
-    public void leaveParkingTest(){
+    public void enterVehicleInParkingWithPlateNullTest() {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("FIS100");
         vehicleDto.setVehicleType(VehicleType.CAR);
         vehicleDto.setCylinderCapacity(1500);
         vehicleDto.setVehicleEntryTime(new Date());
+        parkingDomain.enterParking(vehicleDto);
 
         //Act
-        parkingDomainService.leaveParking(vehicleDto);
+        VehicleDto vehicle = parkingDomain.getVehicle(vehicleDto.getPlate());
+
+        //Assert;
+        Assert.assertEquals(vehicleDto.getPlate(),vehicle.getPlate());
+    }
+
+    @Test
+    public void getVehicleFromParkingSucessfulTest() {
+        //Arrenge
+        VehicleDto vehicleDto = new VehicleDto();
+        vehicleDto.setPlate("FIS100");
+        vehicleDto.setVehicleType(VehicleType.CAR);
+        vehicleDto.setCylinderCapacity(1500);
+        vehicleDto.setVehicleEntryTime(new Date());
+        parkingDomain.enterParking(vehicleDto);
+
+        //Act
+        VehicleDto vehicle = parkingDomain.getVehicle(vehicleDto.getPlate());
+
+        //Assert;
+        Assert.assertEquals(vehicleDto.getPlate(),vehicle.getPlate());
+    }
+
+    @Test
+    public void leaveVehicleParkingSucessfulTest(){
+        //Arrenge
+        VehicleDto vehicleDto = new VehicleDto();
+        vehicleDto.setPlate("FIS100");
+        vehicleDto.setVehicleType(VehicleType.CAR);
+        vehicleDto.setCylinderCapacity(1500);
+        vehicleDto.setVehicleEntryTime(new Date());
+        parkingDomain.enterParking(vehicleDto);
+
+        //Act
+        parkingDomain.leaveVehicle(vehicleDto);
 
         //Assert
-        List<VehicleDto> listVehicle = parkingDomainService.getListVehicle();
-        VehicleDto vehicle = listVehicle.stream().filter(v -> v.getPlate().equals("FIS100")).findFirst().get();
-        Assert.assertNull(vehicle);
+        List<VehicleDto> list = parkingDomain.getListVehicle();
+        Assert.assertTrue(list.isEmpty());
     }
 }
