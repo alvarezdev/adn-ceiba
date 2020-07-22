@@ -21,10 +21,6 @@ public class VehicleDaoReal implements VehicleImpl {
     Realm realm;
 
     public VehicleDaoReal() {
-        //Context context = ApplicationProvider.getApplicationContext();
-        //Realm.init(context);
-        RealmConfiguration config = new RealmConfiguration.Builder().name("parkingDB.realm").build();
-        Realm.setDefaultConfiguration(config);
         realm = Realm.getDefaultInstance();
     }
 

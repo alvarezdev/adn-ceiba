@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+    <TextView
+        android:id="@+id/title_add_user_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:text="@string/text_button_add_car" />
+
+    <EditText
+        android:id="@+id/input_plate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textAutoCorrect|textMultiLine|textCapCharacters"
+        android:hint="@string/hint_edit_text_plate"
+        android:ems="8"
+        android:maxLength="6" />
+    <EditText
+        android:id="@+id/last_name_add_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="@string/hint_edit_text_cylinder"
+        android:ems="8"
+        android:maxLength="5" />
+    <RadioGroup
+        android:id="@+id/radio_group_vehicle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_button_car"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button_car"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/radio_button_motocycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button_motorcycle" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_bottons_add_car"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_cancel_add_car_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:textColor="@color/colorBlack"
+            android:textSize="14dp"
+            android:text="@string/text_button_cancel" />
+        <Button
+            android:id="@+id/btn_aceptar_add_car_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:textColor="@color/colorBlack"
+            android:textSize="14dp"
+            android:text="@string/text_button_acept" />
+    </LinearLayout>
+</LinearLayout>
