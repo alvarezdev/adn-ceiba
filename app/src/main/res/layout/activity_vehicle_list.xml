@@ -4,13 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentations.VehicleListActivity.VehicleListActivity">
-    <EditText
-        android:id="@+id/editTextSearch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_edit_text_search"
-        android:inputType="textAutoCorrect|textMultiLine|textCapCharacters"/>
+    tools:context=".presentations.VehicleList.VehicleListActivity">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_vehicle_list"
         android:layout_width="match_parent"

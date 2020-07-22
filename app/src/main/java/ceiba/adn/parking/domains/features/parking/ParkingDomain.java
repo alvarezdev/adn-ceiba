@@ -1,7 +1,5 @@
 package ceiba.adn.parking.domains.features.parking;
 
-import android.content.Context;
-
 import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -81,8 +79,13 @@ public class ParkingDomain {
     }
 
     private boolean checkPlateRepeat(List<VehicleDto> vehicleDtoList, VehicleDto vehicleDto) throws BusinessException {
-        boolean vehicle = vehicleDtoList.contains(vehicleDto);
-        if (vehicle){
+        boolean vehicleExist = false;
+        for (VehicleDto vehicle: vehicleDtoList) {
+            if(vehicleDto.getPlate().equals(vehicle.getPlate())){
+                vehicleExist = true;
+            }
+        }
+        if (vehicleExist){
             throw new BusinessException(REPEAT_VEHICLE_PLATE_MSG);
         }
         else{
@@ -129,17 +132,6 @@ public class ParkingDomain {
         return vehicleDaoContext.getListVehicle();
     }
 
-    public int leaveVehicle(VehicleDto vehicleDto) {
-        long entryHour = TimeUnit.MILLISECONDS.toHours(vehicleDto.getVehicleEntryTime().getTime());
-        long departureHour = TimeUnit.MILLISECONDS.toHours(vehicleDto.getVehicleDepartureTime().getTime());
-        int time = (int) (departureHour - entryHour);
-        if (time == 0){
-            time++;
-        }
-        vehicleDaoContext.deleteVehicle(vehicleDto);
-        return calculateValueParking(time, vehicleDto);
-
-    }
     public VehicleDto getVehicle(String plate) throws DataBaseException {
         VehicleDto vehicleDto = vehicleDaoContext.getVehicle(plate);
         if (vehicleDto == null){
@@ -148,7 +140,17 @@ public class ParkingDomain {
         return vehicleDto;
     }
 
-    private int calculateValueParking(int time, VehicleDto vehicleDto){
+    public void leaveVehicle(VehicleDto vehicleDto) {
+        vehicleDaoContext.deleteVehicle(vehicleDto);
+    }
+
+    public int calculateValueParking(VehicleDto vehicleDto){
+        long entryHour = TimeUnit.MILLISECONDS.toHours(vehicleDto.getVehicleEntryTime().getTime());
+        long departureHour = TimeUnit.MILLISECONDS.toHours(vehicleDto.getVehicleDepartureTime().getTime());
+        int time = (int) (departureHour - entryHour);
+        if (time == 0){
+            time++;
+        }
 
         int hourPrice = 0;
         int dayPrice = 0;

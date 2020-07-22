@@ -1,14 +1,18 @@
 <resources>
     <string name="app_name">Parking</string>
-    <string name="text_button_add_car">Agregar vehículo</string>
-    <string name="text_button_get_cars">Ver lista de vehículos</string>
-    <string name="text_button_acept">Aceptar</string>
+    <string name="text_button_add_vehicles">Agregar vehículo</string>
+    <string name="text_button_get_vehicles">Ver lista de vehículos</string>
+    <string name="text_button_accept">Aceptar</string>
     <string name="text_button_cancel">Cancelar</string>
     <string name="hint_edit_text_plate">Ingrese plata</string>
     <string name="hint_edit_text_cylinder">Ingrese cilindraje</string>
     <string name="radio_button_car">Carro</string>
     <string name="radio_button_motorcycle">Motocicleta</string>
     <string name="hint_edit_text_search">Buscar vehículo...</string>
-    <string name="title_advice_dialog">Confirmación de salida</string>
+    <string name="title_advice_dialog">Confirmar la salida</string>
     <string name="message_advice_dialog">¿Está seguro de retirar el vehículo?</string>
+    <string name="message_warring_add_user">No hay diligenciado correctamente los campos de texto</string>
+    <string name="text_button_leave_vehicle">Salir</string>
+    <string name="text_pay_message_dialog_fragment">Valor a pagar es: </string>
+    <string name="add_message_successful">Se agrego vehículo exitosamente</string>
 </resources>

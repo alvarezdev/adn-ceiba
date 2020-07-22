@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center">
+    android:gravity="center_horizontal"
+    android:padding="30dp">
     <TextView
         android:id="@+id/title_advice"
         android:layout_width="wrap_content"
@@ -12,18 +13,21 @@
         android:textSize="20dp"
         android:text="@string/title_advice_dialog" />
     <TextView
-        android:id="@+id/message_advice"
+        android:id="@+id/pay_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title_advice_dialog" />
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="16dp"
+        android:text=""/>
 
     <LinearLayout
-        android:id="@+id/linearLayout_bottons_advice"
+        android:id="@+id/linearLayout_buttons_departure_vehicle"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/btn_cancel_add_car_advice"
+            android:id="@+id/cancel_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -31,12 +35,12 @@
             android:textSize="14dp"
             android:text="@string/text_button_cancel" />
         <Button
-            android:id="@+id/btn_aceptar_add_car_advice"
+            android:id="@+id/accept_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:textColor="@color/colorBlack"
             android:textSize="14dp"
-            android:text="@string/text_button_acept" />
+            android:text="@string/text_button_accept" />
     </LinearLayout>
 </LinearLayout>

@@ -5,26 +5,26 @@
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentations.HomeActivity.HomeActivity">
+    tools:context=".presentations.Home.HomeActivity">
 
     <Button
-        android:id="@+id/add_car"
+        android:id="@+id/button_add_vehicle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:background="@drawable/button_background"
         android:layout_marginBottom="20dp"
         android:padding="20dp"
-        android:text="@string/text_button_add_car" />
+        android:text="@string/text_button_add_vehicles" />
     <Button
-        android:id="@+id/get_cars"
+        android:id="@+id/button_get_vehicles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/add_car"
+        android:layout_below="@+id/button_add_vehicle"
         android:background="@drawable/button_background"
         android:padding="20dp"
-        android:text="@string/text_button_get_cars" />
+        android:text="@string/text_button_get_vehicles" />
 
 </RelativeLayout>
 

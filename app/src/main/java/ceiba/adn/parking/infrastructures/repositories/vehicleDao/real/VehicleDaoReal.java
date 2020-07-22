@@ -77,25 +77,17 @@ public class VehicleDaoReal implements VehicleImpl {
                 VehicleEntity result = realm.where(VehicleEntity.class).equalTo("plate", vehicle.getPlate()).findFirst();
                 result.deleteFromRealm();
             }
-            else{
-                //Exception
-            }
         });
 
     }
 
     @Override
     public void deleteAll() {
-
         realm.executeTransaction(realm -> {
             RealmResults<VehicleEntity> result = realm.where(VehicleEntity.class).findAll();
             if (!result.isEmpty()) {
                 result.deleteAllFromRealm();
             }
-            else{
-                //Exception
-            }
-
         });
     }
 }

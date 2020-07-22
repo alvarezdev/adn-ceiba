@@ -236,7 +236,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void leaveCarFromParkingAndCalculatePriceSucessfulTest() throws BusinessException, DataBaseException {
+    public void calculateForHoursPriceCarsTest() throws BusinessException, DataBaseException {
 
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
@@ -249,14 +249,34 @@ public class ParkingDomainTest {
         //Act
         VehicleDto vehicle = parkingDomain.getVehicle(vehicleDto.getPlate());
         vehicle.setVehicleDepartureTime(new GregorianCalendar(2020, 6, 19,2,25).getTime());
-        int valuePay = parkingDomain.leaveVehicle(vehicleDto);
+        int valuePay = parkingDomain.calculateValueParking(vehicleDto);
 
         //Assert;
         Assert.assertEquals(valuePay,2000);
     }
 
     @Test
-    public void leaveMotorCycleFromParkingAndCalculatePriceSucessfulTest() throws BusinessException, DataBaseException {
+    public void calculateForDayPriceCarsTest() throws BusinessException, DataBaseException {
+
+        //Arrenge
+        VehicleDto vehicleDto = new VehicleDto();
+        vehicleDto.setPlate("FIS100");
+        vehicleDto.setVehicleType(VehicleType.CAR);
+        vehicleDto.setCylinderCapacity(1500);
+        vehicleDto.setVehicleEntryTime(new GregorianCalendar(2020, 6, 19,0,5).getTime());
+        parkingDomain.enterParking(vehicleDto);
+
+        //Act
+        VehicleDto vehicle = parkingDomain.getVehicle(vehicleDto.getPlate());
+        vehicle.setVehicleDepartureTime(new GregorianCalendar(2020, 6, 20,2,25).getTime());
+        int valuePay = parkingDomain.calculateValueParking(vehicleDto);
+
+        //Assert;
+        Assert.assertEquals(valuePay,10000);
+    }
+
+    @Test
+    public void calculateForHoursPriceMotocycleTest() throws BusinessException, DataBaseException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("BBC100");
@@ -268,14 +288,14 @@ public class ParkingDomainTest {
         //Act
         VehicleDto vehicle = parkingDomain.getVehicle(vehicleDto.getPlate());
         vehicle.setVehicleDepartureTime(new GregorianCalendar(2020, 6, 19,2,25).getTime());
-        int valuePay = parkingDomain.leaveVehicle(vehicleDto);
+        int valuePay = parkingDomain.calculateValueParking(vehicleDto);
 
         //Assert;
         Assert.assertEquals(valuePay,1000);
     }
 
     @Test
-    public void leaveMotorCycleGreatear500FromParkingAndCalculatePriceSucessfulTest() throws BusinessException, DataBaseException {
+    public void calculateForHoursPriceMotocycleGreatear500Test() throws BusinessException, DataBaseException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("BBC100");
@@ -287,9 +307,36 @@ public class ParkingDomainTest {
         //Act
         VehicleDto vehicle = parkingDomain.getVehicle(vehicleDto.getPlate());
         vehicle.setVehicleDepartureTime(new GregorianCalendar(2020, 6, 19,2,25).getTime());
-        int valuePay = parkingDomain.leaveVehicle(vehicleDto);
+        int valuePay = parkingDomain.calculateValueParking(vehicleDto);
+        parkingDomain.leaveVehicle(vehicleDto);
 
         //Assert;
         Assert.assertEquals(valuePay,3000);
+    }
+
+    @Test
+    public void leaveVehicleSucessfulTest() throws BusinessException, DataBaseException {
+        //Arrenge
+        VehicleDto vehicleDto = new VehicleDto();
+        vehicleDto.setPlate("BBC100");
+        vehicleDto.setVehicleType(VehicleType.MOTORCYCLE);
+        vehicleDto.setCylinderCapacity(650);
+        vehicleDto.setVehicleEntryTime(new GregorianCalendar(2020, 6, 19,0,5).getTime());
+        parkingDomain.enterParking(vehicleDto);
+
+        //Act
+        VehicleDto vehicle = parkingDomain.getVehicle(vehicleDto.getPlate());
+        vehicle.setVehicleDepartureTime(new GregorianCalendar(2020, 6, 19,2,25).getTime());
+        parkingDomain.leaveVehicle(vehicleDto);
+
+        try {
+            //Act
+            parkingDomain.getVehicle(vehicleDto.getPlate());
+            Assert.fail();
+        }catch (Exception e){
+            Assert.assertTrue(e instanceof  DataBaseException);
+            //Assert;
+            Assert.assertEquals("This vehicle is not in the parking", e.getMessage());
+        }
     }
 }
