@@ -45,15 +45,9 @@ public class ParkingDomain {
 
     @Inject
     public ParkingDomain() {
-        if (BuildConfig.FLAVOR.equals("mocks")){
-            vehicleImpl = new VehicleDaoMock();
-        }else {
-            vehicleImpl = new VehicleDaoReal();
-        }
-
+        vehicleImpl = new VehicleDaoMock();
         parkingDomainComponent = DaggerParkingDomainComponent.builder().parkingDomainModule(new ParkingDomainModule()).build();
         parkingDomainComponent.inject(this);
-
         vehicleDaoContext = new VehicleDaoContext();
         vehicleDaoContext.setVehicleDaoContext(vehicleImpl);
     }

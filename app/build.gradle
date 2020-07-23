@@ -21,18 +21,6 @@ android {
         }
     }
 
-    flavorDimensions "default"
-    productFlavors {
-        real{
-            applicationId "ceiba.adn.parking.infrastructures.repositories.vehicleDao.real"
-            //buildConfigField("String", "FLAVORS", "real")
-        }
-        mocks{
-            applicationId "ceiba.adn.parking.infrastructures.repositories.vehicleDao.mock"
-            //buildConfigField("String", "FLAVORS", "mocks")
-        }
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
