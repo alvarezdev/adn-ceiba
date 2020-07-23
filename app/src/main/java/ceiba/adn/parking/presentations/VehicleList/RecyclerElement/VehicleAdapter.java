@@ -3,10 +3,14 @@ package ceiba.adn.parking.presentations.VehicleList.RecyclerElement;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import ceiba.adn.parking.R;
 import ceiba.adn.parking.dtos.VehicleDto;
@@ -50,5 +54,24 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleItem> {
     @Override
     public int getItemCount() {
         return vehicleList.size();
+    }
+
+    public void filter(String text) {
+        if (text.isEmpty()){
+            vehicleList.clear();
+            vehicleList = vehicleListActivity.getUserList();
+        }else{
+            List<VehicleDto> vehicleDtoList = new ArrayList<>();
+            for (VehicleDto vehicle:vehicleListActivity.getUserList()) {
+                if (vehicle.getPlate().contains(text)){
+                    vehicleDtoList.add(vehicle);
+                }
+            }
+            vehicleList = vehicleDtoList;
+        }
+        if (vehicleList.size() == 0){
+            Toast.makeText(vehicleListActivity,R.string.list_is_empty, Toast.LENGTH_SHORT).show();
+        }
+        notifyDataSetChanged();
     }
 }

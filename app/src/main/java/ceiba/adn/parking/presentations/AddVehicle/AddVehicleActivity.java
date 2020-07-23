@@ -35,7 +35,7 @@ public class AddVehicleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_car);
+        setContentView(R.layout.activity_add_vehicle);
         initComponent();
     }
 
@@ -44,8 +44,8 @@ public class AddVehicleActivity extends AppCompatActivity {
         plate = findViewById(R.id.input_plate);
         cylinderCapacity = findViewById(R.id.input_cylinder_capacity);
         vehicleGroup = findViewById(R.id.radio_group_vehicle);
-        accept = findViewById(R.id.btn_accept_add_car);
-        cancel = findViewById(R.id.btn_cancel_add_car);
+        accept = findViewById(R.id.btn_accept_add_vehicle);
+        cancel = findViewById(R.id.btn_cancel_add_vehicle);
 
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,14 +69,14 @@ public class AddVehicleActivity extends AppCompatActivity {
                     vehicleDto.setVehicleEntryTime(new Date());
                     try {
                         addVehicleViewModel.addVehicle(vehicleDto);
+                        Toast.makeText(getApplicationContext(),R.string.add_vehicle_message_successful,Toast.LENGTH_LONG).show();
                         finish();
-                        Toast.makeText(getApplicationContext(),R.string.add_message_successful,Toast.LENGTH_LONG).show();
                     }catch (BusinessException e){
                         Log.d(TAG, e.getMessage());
                         Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 }else{
-                    Toast.makeText(getApplicationContext(),R.string.message_warring_add_user,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),R.string.message_warring_add_vehicle,Toast.LENGTH_LONG).show();
                 }
             }
         });

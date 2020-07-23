@@ -8,13 +8,13 @@
     tools:context=".presentations.AddVehicle.AddVehicleActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout_add_car"
+        android:id="@+id/linearLayout_add_vehicle"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/title_add_user_dialog"
+            android:id="@+id/title_add_vehicle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
@@ -54,7 +54,7 @@
                 android:checked="true" />
 
             <RadioButton
-                android:id="@+id/radio_button_motocycle"
+                android:id="@+id/radio_button_motorcycle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/radio_button_motorcycle" />
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <Button
-                android:id="@+id/btn_cancel_add_car"
+                android:id="@+id/btn_cancel_add_vehicle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -75,7 +75,7 @@
                 android:textSize="14dp"
                 android:text="@string/text_button_cancel" />
             <Button
-                android:id="@+id/btn_accept_add_car"
+                android:id="@+id/btn_accept_add_vehicle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"

@@ -11,8 +11,9 @@
     <string name="hint_edit_text_search">Buscar vehículo...</string>
     <string name="title_advice_dialog">Confirmar la salida</string>
     <string name="message_advice_dialog">¿Está seguro de retirar el vehículo?</string>
-    <string name="message_warring_add_user">No hay diligenciado correctamente los campos de texto</string>
+    <string name="message_warring_add_vehicle">No hay diligenciado correctamente los campos de texto</string>
     <string name="text_button_leave_vehicle">Salir</string>
     <string name="text_pay_message_dialog_fragment">Valor a pagar es: </string>
-    <string name="add_message_successful">Se agrego vehículo exitosamente</string>
+    <string name="add_vehicle_message_successful">Se agrego vehículo exitosamente</string>
+    <string name="list_is_empty">No se ha encontrado ningun vehículo con esa placa</string>
 </resources>
