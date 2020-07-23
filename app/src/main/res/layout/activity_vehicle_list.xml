@@ -9,6 +9,7 @@
         android:id="@+id/input_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLength="6"
         android:hint="@string/hint_edit_text_search"
         android:inputType="textAutoCorrect|textMultiLine|textCapCharacters"/>
     <androidx.recyclerview.widget.RecyclerView

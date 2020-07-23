@@ -29,7 +29,7 @@
             android:inputType="textAutoCorrect|textMultiLine|textCapCharacters"
             android:hint="@string/hint_edit_text_plate"
             android:ems="8"
-            android:maxLength="6" />
+            android:maxLength="5" />
         <EditText
             android:id="@+id/input_cylinder_capacity"
             android:layout_width="wrap_content"

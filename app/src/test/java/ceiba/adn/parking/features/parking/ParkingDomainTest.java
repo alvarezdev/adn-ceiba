@@ -31,7 +31,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterVehicleInParkingSucessfulTest() throws BusinessException, DataBaseException {
+    public void enterCarWhenParkingHasSpaceSuccessfulTest() throws BusinessException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("FIS100");
@@ -49,27 +49,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterVehicleInParkingWithPlateNullTest() {
-        //Arrenge
-        VehicleDto vehicleDto = new VehicleDto();
-        vehicleDto.setPlate("FIS100");
-        vehicleDto.setVehicleType(VehicleType.CAR);
-        vehicleDto.setCylinderCapacity(0);
-        vehicleDto.setVehicleEntryTime(new Date());
-
-        try {
-            //Act
-            parkingDomain.enterParking(vehicleDto);
-            Assert.fail();
-        }catch (Exception e){
-            Assert.assertTrue(e instanceof  BusinessException);
-            //Assert;
-            Assert.assertEquals("The cylinder capacity of the vehicle must be greater than zero", e.getMessage());
-        }
-    }
-
-    @Test
-    public void enterVehicleInParkingWithZeroCylinderCapacityTest() {
+    public void enterCarWhenParkingHasSpaceAndPlateNullBusinessExceptionTest() {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate(null);
@@ -89,7 +69,27 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterVehicleInParkingPlateRepeatTest() throws BusinessException {
+    public void enterCarWhenParkingHasSpaceAndZeroCylinderCapacityBusinessExceptionTest() {
+        //Arrenge
+        VehicleDto vehicleDto = new VehicleDto();
+        vehicleDto.setPlate("FIS100");
+        vehicleDto.setVehicleType(VehicleType.CAR);
+        vehicleDto.setCylinderCapacity(0);
+        vehicleDto.setVehicleEntryTime(new Date());
+
+        try {
+            //Act
+            parkingDomain.enterParking(vehicleDto);
+            Assert.fail();
+        }catch (Exception e){
+            Assert.assertTrue(e instanceof  BusinessException);
+            //Assert;
+            Assert.assertEquals("The cylinder capacity of the vehicle must be greater than zero", e.getMessage());
+        }
+    }
+
+    @Test
+    public void enterCarInParkingWithPlateRepeatBusinessExceptionTest() throws BusinessException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("FIS100");
@@ -115,7 +115,73 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterVehicleInParkingSundayAndPlateBeginsATest() {
+    public void enterMotorcycleWhenParkingHasSpaceAndPlateNullBusinessExceptionTest() {
+        //Arrenge
+        VehicleDto vehicleDto = new VehicleDto();
+        vehicleDto.setPlate(null);
+        vehicleDto.setVehicleType(VehicleType.MOTORCYCLE);
+        vehicleDto.setCylinderCapacity(1500);
+        vehicleDto.setVehicleEntryTime(new Date());
+
+        try {
+            //Act
+            parkingDomain.enterParking(vehicleDto);
+            Assert.fail();
+        }catch (Exception e){
+            Assert.assertTrue(e instanceof  BusinessException);
+            //Assert;
+            Assert.assertEquals("Vehicle plate can't null or empty", e.getMessage());
+        }
+    }
+
+    @Test
+    public void enterMotorcycleWhenParkingHasSpaceAndZeroCylinderCapacityBusinessExceptionTest() {
+        //Arrenge
+        VehicleDto vehicleDto = new VehicleDto();
+        vehicleDto.setPlate("FIS100");
+        vehicleDto.setVehicleType(VehicleType.MOTORCYCLE);
+        vehicleDto.setCylinderCapacity(0);
+        vehicleDto.setVehicleEntryTime(new Date());
+
+        try {
+            //Act
+            parkingDomain.enterParking(vehicleDto);
+            Assert.fail();
+        }catch (Exception e){
+            Assert.assertTrue(e instanceof  BusinessException);
+            //Assert;
+            Assert.assertEquals("The cylinder capacity of the vehicle must be greater than zero", e.getMessage());
+        }
+    }
+
+    @Test
+    public void enterMotorcycleInParkingWithPlateRepeatBusinessExceptionTest() throws BusinessException {
+        //Arrenge
+        VehicleDto vehicleDto = new VehicleDto();
+        vehicleDto.setPlate("FIS100");
+        vehicleDto.setVehicleType(VehicleType.MOTORCYCLE);
+        vehicleDto.setCylinderCapacity(1500);
+        vehicleDto.setVehicleEntryTime(new Date());
+        parkingDomain.enterParking(vehicleDto);
+
+        try {
+            //Act
+            VehicleDto vehicle = new VehicleDto();
+            vehicle.setPlate("FIS100");
+            vehicle.setVehicleType(VehicleType.CAR);
+            vehicle.setCylinderCapacity(1600);
+            vehicle.setVehicleEntryTime(new Date());
+            parkingDomain.enterParking(vehicleDto);
+            Assert.fail();
+        }catch (Exception e){
+            Assert.assertTrue(e instanceof  BusinessException);
+            //Assert;
+            Assert.assertEquals("The vehicle plate is repeat", e.getMessage());
+        }
+    }
+
+    @Test
+    public void enterCarWhenParkingHasSpaceAndSundayAndPlateBeginsABusinessExceptionTestTest() {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("AIS100");
@@ -135,7 +201,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void parkingCapacityCarsFullTest() throws BusinessException {
+    public void enterCarWhenParkingNotHaveCapacityForCarsBusinessExceptionTest() throws BusinessException {
         //Arrenge
         for (VehicleDto vehicle : parkingDomainTextAux.createListCar()) {
             parkingDomain.enterParking(vehicle);
@@ -158,7 +224,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void parkingCapacityMotorCycleFullTest() throws BusinessException {
+    public void enterMotorcycleWhenParkingNotHaveCapacityForMotorcyclesBusinessExceptionTest() throws BusinessException {
         //Arrenge
         for (VehicleDto vehicle : parkingDomainTextAux.createListMotorCycle()) {
             parkingDomain.enterParking(vehicle);
@@ -181,7 +247,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void fullParkingTest() throws BusinessException, DataBaseException {
+    public void enterVehicleWhenParkingNotHaveCapacityForVehiclesBusinessExceptionTest() throws BusinessException {
         //Arrenge
         List<VehicleDto> list = parkingDomainTextAux.createListVehicle();
         for (VehicleDto vehicle : parkingDomainTextAux.createListVehicle()) {
@@ -205,7 +271,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void getVehicleFromParkingSucessfulTest() throws BusinessException, DataBaseException {
+    public void getVehicleFromParkingSuccessfulTest() throws BusinessException, DataBaseException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("FIS100");
@@ -220,8 +286,9 @@ public class ParkingDomainTest {
         //Assert;
         Assert.assertEquals(vehicleDto.getPlate(),vehicle.getPlate());
     }
+
     @Test
-    public void getVehicleNotExitTest() {
+    public void getVehicleFromParkingNonexistentDataBaseExceptionTest() {
         //Arrenge
 
         try {
@@ -236,7 +303,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void calculateForHoursPriceCarsTest() throws BusinessException, DataBaseException {
+    public void calculateForHoursPriceCarsSuccessfulTest() throws BusinessException, DataBaseException {
 
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
@@ -256,7 +323,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void calculateForDayPriceCarsTest() throws BusinessException, DataBaseException {
+    public void calculateForDayPriceCarsSuccessfulTest() throws BusinessException, DataBaseException {
 
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
@@ -276,7 +343,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void calculateForHoursPriceMotocycleTest() throws BusinessException, DataBaseException {
+    public void calculateForHoursPriceMotorcycleSuccessfulTest() throws BusinessException, DataBaseException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("BBC100");
@@ -295,7 +362,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void calculateForHoursPriceMotocycleGreatear500Test() throws BusinessException, DataBaseException {
+    public void calculateForHoursPriceMotorcycleGreatear500SuccessfulTest() throws BusinessException, DataBaseException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("BBC100");
@@ -315,7 +382,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void leaveVehicleSucessfulTest() throws BusinessException, DataBaseException {
+    public void leaveVehicleFromParkingSuccessfulTest() throws BusinessException, DataBaseException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("BBC100");
