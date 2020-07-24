@@ -382,7 +382,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void leaveVehicleFromParkingSuccessfulTest() throws BusinessException, DataBaseException {
+    public void leaveCarFromParkingAndRemoveToVehicleListSuccessfulTest() throws BusinessException, DataBaseException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("BBC100");
