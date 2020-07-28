@@ -1,9 +1,6 @@
-package ceiba.adn.parking.infrastructures.repositories.Entities;
-
-import java.util.Date;
+package ceiba.adn.parking.infrastructures.repositories.entities;
 
 import ceiba.adn.parking.dtos.VehicleDto;
-import ceiba.adn.parking.enums.VehicleType;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 

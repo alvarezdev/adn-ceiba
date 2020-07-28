@@ -1,4 +1,4 @@
-package ceiba.adn.parking.presentations.VehicleList;
+package ceiba.adn.parking.presentations.vehicleList;
 
 import androidx.lifecycle.ViewModel;
 

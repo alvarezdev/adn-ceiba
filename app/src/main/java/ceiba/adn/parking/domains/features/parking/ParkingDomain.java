@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
-import ceiba.adn.parking.BuildConfig;
 import ceiba.adn.parking.domains.dependencyInjections.DaggerParkingDomainComponent;
 import ceiba.adn.parking.domains.dependencyInjections.ParkingDomainComponent;
 import ceiba.adn.parking.domains.dependencyInjections.ParkingDomainModule;
@@ -16,9 +15,7 @@ import ceiba.adn.parking.domains.models.VehicleModel;
 import ceiba.adn.parking.dtos.VehicleDto;
 import ceiba.adn.parking.enums.VehicleType;
 import ceiba.adn.parking.infrastructures.repositories.vehicleDao.VehicleDaoContext;
-import ceiba.adn.parking.infrastructures.repositories.vehicleDao.VehicleImpl;
-import ceiba.adn.parking.infrastructures.repositories.vehicleDao.mock.VehicleDaoMock;
-import ceiba.adn.parking.infrastructures.repositories.vehicleDao.real.VehicleDaoReal;
+import ceiba.adn.parking.contracts.VehicleDaoImpl;
 
 public class ParkingDomain {
 
@@ -41,19 +38,12 @@ public class ParkingDomain {
     @Inject
     public VehicleDaoContext vehicleDaoContext;
     public ParkingDomainComponent parkingDomainComponent;
-    private VehicleImpl vehicleImpl;
+    private VehicleDaoImpl vehicleDaoImpl;
 
     @Inject
     public ParkingDomain() {
-        if (BuildConfig.FLAVOR.equals("mocks")){
-            vehicleImpl = new VehicleDaoMock();
-        }else {
-            vehicleImpl = new VehicleDaoReal();
-        }
-        parkingDomainComponent = DaggerParkingDomainComponent.builder().parkingDomainModule(new ParkingDomainModule()).build();
+        parkingDomainComponent = DaggerParkingDomainComponent.builder().parkingDomainModule(new ParkingDomainModule(vehicleDaoImpl)).build();
         parkingDomainComponent.inject(this);
-        vehicleDaoContext = new VehicleDaoContext();
-        vehicleDaoContext.setVehicleDaoContext(vehicleImpl);
     }
 
     public void deleteAll() {
@@ -69,7 +59,7 @@ public class ParkingDomain {
         }else{
             boolean plateRepeat = checkPlateRepeat(vehicleDtoList, vehicleDto);
             boolean checkDate = checkDate(vehicleDto);
-            boolean MaxCapacityVehicle = MaxCapacityVehicle(vehicleDtoList, vehicleDto.getVehicleType());
+            boolean MaxCapacityVehicle = maxCapacityVehicle(vehicleDtoList, vehicleDto.getVehicleType());
             if (plateRepeat && checkDate && MaxCapacityVehicle){
                 vehicleDaoContext.addVehicle(vehicleDto);
             }
@@ -85,8 +75,7 @@ public class ParkingDomain {
         }
         if (vehicleExist){
             throw new BusinessException(REPEAT_VEHICLE_PLATE_MSG);
-        }
-        else{
+        }else{
             return true;
         }
     }
@@ -97,13 +86,12 @@ public class ParkingDomain {
         int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
         if((dayOfWeek == Calendar.SUNDAY || dayOfWeek == Calendar.MONDAY) && vehicleDto.getPlate().substring(0,1).equals("A")){
             throw new BusinessException(UNAUTHORIZED_ENTRY);
-        }
-        else{
+        }else{
             return true;
         }
     }
 
-    private boolean MaxCapacityVehicle(List<VehicleDto> vehicleDtoList, VehicleType vehicleType) throws BusinessException {
+    private boolean maxCapacityVehicle(List<VehicleDto> vehicleDtoList, VehicleType vehicleType) throws BusinessException {
         int capacityNumber = 0;
         for (int i = 0; i < vehicleDtoList.size(); i++) {
             VehicleDto vehicleDto = vehicleDtoList.get(i);
@@ -166,11 +154,9 @@ public class ParkingDomain {
         int result =0;
         if (time >= 1 && time <= 9){
             result = time * hourPrice;
-        }
-        else if(time > 9 && time <= 24){
+        }else if(time > 9 && time <= 24){
             result = dayPrice;
-        }
-        else if(time > 24){
+        }else if(time > 24){
             int hours = time - 24;
             if (hours < 0){
                 hours = hours * -1;

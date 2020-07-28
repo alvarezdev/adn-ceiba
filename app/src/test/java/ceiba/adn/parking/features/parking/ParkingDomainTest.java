@@ -31,7 +31,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterCarWhenParkingHasSpaceSuccessfulTest() throws BusinessException {
+    public void enterParking_EnterCarWhenParkingHasSpace_Successful_Test() throws BusinessException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("FIS100");
@@ -49,7 +49,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterCarWhenParkingHasSpaceAndPlateNullBusinessExceptionTest() {
+    public void enterParking_EnterCarWithEmptyPlate_BusinessException_Test() {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate(null);
@@ -69,7 +69,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterCarWhenParkingHasSpaceAndZeroCylinderCapacityBusinessExceptionTest() {
+    public void enterParking_EnterCarWithZeroCylinderCapacity_BusinessException_Test() {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("FIS100");
@@ -89,7 +89,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterCarInParkingWithPlateRepeatBusinessExceptionTest() throws BusinessException {
+    public void enterParking_EnterCarWithPlateRepeat_BusinessException_Test() throws BusinessException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("FIS100");
@@ -115,7 +115,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterMotorcycleWhenParkingHasSpaceAndPlateNullBusinessExceptionTest() {
+    public void enterParking_EnterMotorcycleWithEmptyPlate_BusinessException_Test() {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate(null);
@@ -135,7 +135,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterMotorcycleWhenParkingHasSpaceAndZeroCylinderCapacityBusinessExceptionTest() {
+    public void enterParking_EnterMotorcycleWithZeroCylinderCapacity_BusinessException_Test() {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("FIS100");
@@ -155,7 +155,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterMotorcycleInParkingWithPlateRepeatBusinessExceptionTest() throws BusinessException {
+    public void enterParking_EnterMotorcycleWithPlateRepeat_BusinessException_Test() throws BusinessException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("FIS100");
@@ -181,7 +181,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterCarWhenParkingHasSpaceAndSundayAndPlateBeginsABusinessExceptionTestTest() {
+    public void enterParking_EnterCarWhenIsSundayAndPlateBeginsA_BusinessException_Test() {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("AIS100");
@@ -201,7 +201,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterCarWhenParkingNotHaveCapacityForCarsBusinessExceptionTest() throws BusinessException {
+    public void enterParking_EnterCarWhenParkingNotHaveCapacityForCarsBusinessExceptionTest() throws BusinessException {
         //Arrenge
         for (VehicleDto vehicle : parkingDomainTextAux.createListCar()) {
             parkingDomain.enterParking(vehicle);
@@ -224,7 +224,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterMotorcycleWhenParkingNotHaveCapacityForMotorcyclesBusinessExceptionTest() throws BusinessException {
+    public void enterParking_enterMotorcycleWhenParkingNotHaveCapacityForMotorcyclesBusinessExceptionTest() throws BusinessException {
         //Arrenge
         for (VehicleDto vehicle : parkingDomainTextAux.createListMotorCycle()) {
             parkingDomain.enterParking(vehicle);
@@ -247,9 +247,8 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterVehicleWhenParkingNotHaveCapacityForVehiclesBusinessExceptionTest() throws BusinessException {
+    public void enterParking_enterVehicleWhenParkingNotHaveCapacityForVehicles_BusinessException_Test() throws BusinessException {
         //Arrenge
-        List<VehicleDto> list = parkingDomainTextAux.createListVehicle();
         for (VehicleDto vehicle : parkingDomainTextAux.createListVehicle()) {
             parkingDomain.enterParking(vehicle);
         }
@@ -271,7 +270,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void getVehicleFromParkingSuccessfulTest() throws BusinessException, DataBaseException {
+    public void getVehicle_getCarFromParking_Successful_Test() throws BusinessException, DataBaseException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("FIS100");
@@ -288,7 +287,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void getVehicleFromParkingNonexistentDataBaseExceptionTest() {
+    public void getVehicle_getCarFromParkingNonexistent_DataBaseException_Test() {
         //Arrenge
 
         try {
@@ -303,7 +302,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void calculateForHoursPriceCarsSuccessfulTest() throws BusinessException, DataBaseException {
+    public void calculateValueParking_calculateForHoursPriceCars_Successful_Test() throws BusinessException, DataBaseException {
 
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
@@ -323,7 +322,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void calculateForDayPriceCarsSuccessfulTest() throws BusinessException, DataBaseException {
+    public void calculateValueParking_calculateForDayPriceCars_Successful_Test() throws BusinessException, DataBaseException {
 
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
@@ -343,7 +342,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void calculateForHoursPriceMotorcycleSuccessfulTest() throws BusinessException, DataBaseException {
+    public void calculateValueParking_calculateForHoursPriceMotorcycle_Successful_Test() throws BusinessException, DataBaseException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("BBC100");
@@ -362,7 +361,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void calculateForHoursPriceMotorcycleGreatear500SuccessfulTest() throws BusinessException, DataBaseException {
+    public void calculateValueParking_calculateForHoursPriceMotorcycleGreatear500_Successful_Test() throws BusinessException, DataBaseException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("BBC100");
@@ -382,7 +381,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void leaveCarFromParkingAndRemoveToVehicleListSuccessfulTest() throws BusinessException, DataBaseException {
+    public void leaveVehicle_leaveCarParkingAndRemoveToVehicleList_Successful_Test() throws BusinessException, DataBaseException {
         //Arrenge
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setPlate("BBC100");

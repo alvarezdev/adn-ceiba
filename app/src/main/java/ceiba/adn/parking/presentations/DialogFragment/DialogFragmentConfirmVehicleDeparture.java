@@ -1,6 +1,5 @@
-package ceiba.adn.parking.presentations.DialogFragment;
+package ceiba.adn.parking.presentations.dialogFragment;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,7 @@ import androidx.fragment.app.DialogFragment;
 
 import ceiba.adn.parking.R;
 import ceiba.adn.parking.dtos.VehicleDto;
-import ceiba.adn.parking.presentations.VehicleList.VehicleListActivity;
+import ceiba.adn.parking.presentations.vehicleList.VehicleListActivity;
 
 public class DialogFragmentConfirmVehicleDeparture extends DialogFragment {
 

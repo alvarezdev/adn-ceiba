@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentations.VehicleList.VehicleListActivity">
+    tools:context=".presentations.vehicleList.VehicleListActivity">
     <EditText
         android:id="@+id/input_search"
         android:layout_width="match_parent"

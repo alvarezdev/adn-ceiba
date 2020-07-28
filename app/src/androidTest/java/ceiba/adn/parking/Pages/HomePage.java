@@ -1,6 +1,9 @@
-package ceiba.adn.parking;
+package ceiba.adn.parking.Pages;
 
-public class Home extends BaseTest {
+import ceiba.adn.parking.Pages.BasePage;
+import ceiba.adn.parking.R;
+
+public class HomePage extends BasePage {
 
     public static int getHomeButtonAddVehicle() {
         return R.id.button_add_vehicle;

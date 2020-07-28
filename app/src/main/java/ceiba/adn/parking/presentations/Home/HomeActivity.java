@@ -1,4 +1,4 @@
-package ceiba.adn.parking.presentations.Home;
+package ceiba.adn.parking.presentations.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,14 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.List;
-
 import ceiba.adn.parking.R;
-import ceiba.adn.parking.domains.exceptions.DataBaseException;
-import ceiba.adn.parking.domains.features.parking.ParkingDomain;
-import ceiba.adn.parking.dtos.VehicleDto;
-import ceiba.adn.parking.presentations.AddVehicle.AddVehicleActivity;
-import ceiba.adn.parking.presentations.VehicleList.VehicleListActivity;
+import ceiba.adn.parking.presentations.addVehicle.AddVehicleActivity;
+import ceiba.adn.parking.presentations.vehicleList.VehicleListActivity;
 
 public class HomeActivity extends AppCompatActivity {
 

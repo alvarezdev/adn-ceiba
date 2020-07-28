@@ -1,4 +1,4 @@
-package ceiba.adn.parking.presentations.VehicleList.RecyclerElement;
+package ceiba.adn.parking.presentations.vehicleList.RecyclerElement;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import ceiba.adn.parking.R;
 import ceiba.adn.parking.dtos.VehicleDto;
-import ceiba.adn.parking.presentations.DialogFragment.DialogFragmentConfirmVehicleDeparture;
-import ceiba.adn.parking.presentations.VehicleList.VehicleListActivity;
+import ceiba.adn.parking.presentations.dialogFragment.DialogFragmentConfirmVehicleDeparture;
+import ceiba.adn.parking.presentations.vehicleList.VehicleListActivity;
 
 public class VehicleAdapter extends RecyclerView.Adapter<VehicleItem> {
 

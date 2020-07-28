@@ -1,4 +1,4 @@
-package ceiba.adn.parking.presentations.VehicleList.RecyclerElement;
+package ceiba.adn.parking.presentations.vehicleList.RecyclerElement;
 
 import android.view.View;
 import android.widget.Button;

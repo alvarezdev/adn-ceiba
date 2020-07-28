@@ -3,8 +3,6 @@ package ceiba.adn.parking.presentations;
 import android.app.Application;
 
 import ceiba.adn.parking.BuildConfig;
-import ceiba.adn.parking.infrastructures.repositories.vehicleDao.mock.VehicleDaoMock;
-import ceiba.adn.parking.infrastructures.repositories.vehicleDao.real.VehicleDaoReal;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 

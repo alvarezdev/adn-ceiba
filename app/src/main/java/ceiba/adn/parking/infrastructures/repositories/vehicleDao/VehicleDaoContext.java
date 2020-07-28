@@ -4,17 +4,18 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import ceiba.adn.parking.contracts.VehicleDaoImpl;
 import ceiba.adn.parking.dtos.VehicleDto;
 
 public class VehicleDaoContext {
 
-    private VehicleImpl vehicle;
+    private VehicleDaoImpl vehicle;
 
     @Inject
     public VehicleDaoContext() {
     }
 
-    public void setVehicleDaoContext(VehicleImpl vehicle) {
+    public void setVehicleDaoContext(VehicleDaoImpl vehicle) {
         this.vehicle = vehicle;
     }
 

@@ -1,9 +1,8 @@
-package ceiba.adn.parking.presentations.VehicleList;
+package ceiba.adn.parking.presentations.vehicleList;
 
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +15,7 @@ import java.util.List;
 
 import ceiba.adn.parking.R;
 import ceiba.adn.parking.dtos.VehicleDto;
-import ceiba.adn.parking.presentations.VehicleList.RecyclerElement.VehicleAdapter;
+import ceiba.adn.parking.presentations.vehicleList.RecyclerElement.VehicleAdapter;
 
 public class VehicleListActivity extends AppCompatActivity {
 

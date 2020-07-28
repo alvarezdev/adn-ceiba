@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ceiba.adn.parking.dtos.VehicleDto;
-import ceiba.adn.parking.infrastructures.repositories.vehicleDao.VehicleImpl;
+import ceiba.adn.parking.contracts.VehicleDaoImpl;
 
-public class VehicleDaoMock implements VehicleImpl {
+public class VehicleDaoDaoMock implements VehicleDaoImpl {
 
     List<VehicleDto> vehicleList;
 
-    public VehicleDaoMock() {
+    public VehicleDaoDaoMock() {
         vehicleList = new ArrayList<>();
     }
 

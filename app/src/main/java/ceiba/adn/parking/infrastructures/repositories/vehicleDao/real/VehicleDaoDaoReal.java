@@ -1,24 +1,21 @@
 package ceiba.adn.parking.infrastructures.repositories.vehicleDao.real;
 
-import android.app.Application;
-import android.content.Context;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import ceiba.adn.parking.dtos.VehicleDto;
 import ceiba.adn.parking.enums.VehicleType;
-import ceiba.adn.parking.infrastructures.repositories.Entities.VehicleEntity;
-import ceiba.adn.parking.infrastructures.repositories.vehicleDao.VehicleImpl;
+import ceiba.adn.parking.infrastructures.repositories.entities.VehicleEntity;
+import ceiba.adn.parking.contracts.VehicleDaoImpl;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-public class VehicleDaoReal implements VehicleImpl {
+public class VehicleDaoDaoReal implements VehicleDaoImpl {
 
     Realm realm;
 
-    public VehicleDaoReal() {
+    public VehicleDaoDaoReal() {
         realm = Realm.getDefaultInstance();
     }
 

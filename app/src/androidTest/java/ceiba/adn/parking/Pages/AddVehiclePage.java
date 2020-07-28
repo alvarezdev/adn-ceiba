@@ -1,6 +1,8 @@
-package ceiba.adn.parking;
+package ceiba.adn.parking.Pages;
 
-public class AddVehicle extends BaseTest{
+import ceiba.adn.parking.R;
+
+public class AddVehiclePage extends BasePage {
 
     public static int getAddVehicleEditTextPlate() {
         return R.id.input_plate;

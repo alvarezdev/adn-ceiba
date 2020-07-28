@@ -1,6 +1,9 @@
-package ceiba.adn.parking;
+package ceiba.adn.parking.Pages;
 
-public class ConfirmVehicleDeparture extends BaseTest {
+import ceiba.adn.parking.Pages.BasePage;
+import ceiba.adn.parking.R;
+
+public class ConfirmVehicleDeparturePage extends BasePage {
 
     public static int getDialogFragmentTittle() {
         return R.id.title_advice;

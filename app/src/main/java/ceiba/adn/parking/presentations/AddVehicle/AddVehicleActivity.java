@@ -1,4 +1,4 @@
-package ceiba.adn.parking.presentations.AddVehicle;
+package ceiba.adn.parking.presentations.addVehicle;
 
 import android.os.Bundle;
 import android.util.Log;

@@ -7,16 +7,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import ceiba.adn.parking.presentations.Home.HomeActivity;
-
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.matcher.ViewMatchers.withHint;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
+import ceiba.adn.parking.Pages.AddVehiclePage;
+import ceiba.adn.parking.Pages.ConfirmVehicleDeparturePage;
+import ceiba.adn.parking.Pages.HomePage;
+import ceiba.adn.parking.Pages.VehicleListPage;
+import ceiba.adn.parking.presentations.home.HomeActivity;
 
 @RunWith(AndroidJUnit4.class)
 public class ParkingTest {
@@ -28,106 +23,106 @@ public class ParkingTest {
     @Test
     public void enterCarParkingAndSuccessMessageTest(){
         //Given
-        Home.clicked(Home.getHomeButtonAddVehicle());
-        AddVehicle.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehicle.getAddVehicleEditTextPlate(),
-                AddVehicle.getAddVehicleEditTextHintPlate(),"FIS998");
-        AddVehicle.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehicle.getAddVehicleEditTextCylinderCapacity(),
-                AddVehicle.getAddVehicleEditTextHintCylinderCapacity(),"1500");
-        AddVehicle.clicked(AddVehicle.getAddVehicleRadioButtonCar());
-        AddVehicle.checked(AddVehicle.getAddVehicleRadioButtonCar());
-        AddVehicle.notChecked(AddVehicle.getAddVehicleRadioButtonMotorcycle());
+        HomePage.clicked(HomePage.getHomeButtonAddVehicle());
+        AddVehiclePage.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehiclePage.getAddVehicleEditTextPlate(),
+                AddVehiclePage.getAddVehicleEditTextHintPlate(),"FIS998");
+        AddVehiclePage.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehiclePage.getAddVehicleEditTextCylinderCapacity(),
+                AddVehiclePage.getAddVehicleEditTextHintCylinderCapacity(),"1500");
+        AddVehiclePage.clicked(AddVehiclePage.getAddVehicleRadioButtonCar());
+        AddVehiclePage.checked(AddVehiclePage.getAddVehicleRadioButtonCar());
+        AddVehiclePage.notChecked(AddVehiclePage.getAddVehicleRadioButtonMotorcycle());
 
         //When
-        AddVehicle.clicked(AddVehicle.getAddVehicleButtonAccept());
+        AddVehiclePage.clicked(AddVehiclePage.getAddVehicleButtonAccept());
 
         //Assert
-        AddVehicle.toastView(AddVehicle.getAddVehicleMessageToast(),activityRule.getActivity().getWindow().getDecorView());
+        AddVehiclePage.toastView(AddVehiclePage.getAddVehicleMessageToast(),activityRule.getActivity().getWindow().getDecorView());
     }
 
     @Test
     public void enterMotorcycleParkingAndSuccessMessageTest(){
         //Given
-        Home.clicked(Home.getHomeButtonAddVehicle());
-        AddVehicle.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehicle.getAddVehicleEditTextPlate(),
-                AddVehicle.getAddVehicleEditTextHintPlate(),"DPA28Z");
-        AddVehicle.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehicle.getAddVehicleEditTextCylinderCapacity(),
-                AddVehicle.getAddVehicleEditTextHintCylinderCapacity(),"200");
-        AddVehicle.clicked(AddVehicle.getAddVehicleRadioButtonMotorcycle());
-        AddVehicle.checked(AddVehicle.getAddVehicleRadioButtonMotorcycle());
-        AddVehicle.notChecked(AddVehicle.getAddVehicleRadioButtonCar());
+        HomePage.clicked(HomePage.getHomeButtonAddVehicle());
+        AddVehiclePage.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehiclePage.getAddVehicleEditTextPlate(),
+                AddVehiclePage.getAddVehicleEditTextHintPlate(),"DPA28Z");
+        AddVehiclePage.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehiclePage.getAddVehicleEditTextCylinderCapacity(),
+                AddVehiclePage.getAddVehicleEditTextHintCylinderCapacity(),"200");
+        AddVehiclePage.clicked(AddVehiclePage.getAddVehicleRadioButtonMotorcycle());
+        AddVehiclePage.checked(AddVehiclePage.getAddVehicleRadioButtonMotorcycle());
+        AddVehiclePage.notChecked(AddVehiclePage.getAddVehicleRadioButtonCar());
 
         //When
-        AddVehicle.clicked(AddVehicle.getAddVehicleButtonAccept());
+        AddVehiclePage.clicked(AddVehiclePage.getAddVehicleButtonAccept());
 
         //Assert
-        AddVehicle.toastView(AddVehicle.getAddVehicleMessageToast(),activityRule.getActivity().getWindow().getDecorView());
+        AddVehiclePage.toastView(AddVehiclePage.getAddVehicleMessageToast(),activityRule.getActivity().getWindow().getDecorView());
     }
 
     @Test
     public void fillFailedFieldsWhenEnterVehicleParkingAndDisplayErrorMessageTest(){
         //Given
-        Home.clicked(Home.getHomeButtonAddVehicle());
+        HomePage.clicked(HomePage.getHomeButtonAddVehicle());
 
-        AddVehicle.checkEditTextHint(AddVehicle.getAddVehicleEditTextPlate(),AddVehicle.getAddVehicleEditTextHintPlate());
-        AddVehicle.checkEditTextHint(AddVehicle.getAddVehicleEditTextCylinderCapacity(),AddVehicle.getAddVehicleEditTextHintCylinderCapacity());
+        AddVehiclePage.checkEditTextHint(AddVehiclePage.getAddVehicleEditTextPlate(), AddVehiclePage.getAddVehicleEditTextHintPlate());
+        AddVehiclePage.checkEditTextHint(AddVehiclePage.getAddVehicleEditTextCylinderCapacity(), AddVehiclePage.getAddVehicleEditTextHintCylinderCapacity());
 
-        AddVehicle.clicked(AddVehicle.getAddVehicleRadioButtonCar());
-        AddVehicle.checked(AddVehicle.getAddVehicleRadioButtonCar());
-        AddVehicle.notChecked(AddVehicle.getAddVehicleRadioButtonMotorcycle());
+        AddVehiclePage.clicked(AddVehiclePage.getAddVehicleRadioButtonCar());
+        AddVehiclePage.checked(AddVehiclePage.getAddVehicleRadioButtonCar());
+        AddVehiclePage.notChecked(AddVehiclePage.getAddVehicleRadioButtonMotorcycle());
 
         //When
-        AddVehicle.clicked(AddVehicle.getAddVehicleButtonAccept());
+        AddVehiclePage.clicked(AddVehiclePage.getAddVehicleButtonAccept());
 
         //Assert
-        AddVehicle.toastView(AddVehicle.getAddVehicleMessageWarringToast(),activityRule.getActivity().getWindow().getDecorView());
+        AddVehiclePage.toastView(AddVehiclePage.getAddVehicleMessageWarringToast(),activityRule.getActivity().getWindow().getDecorView());
     }
 
     @Test
     public void searchPlateFailedResultsAndEmptyListMessageTest(){
         //Given
-        Home.clicked(Home.getHomeButtonShowVehicleList());
+        HomePage.clicked(HomePage.getHomeButtonShowVehicleList());
 
         //When
-        VehicleList.checkEditTextHintAndTypeTextAndCloseKeyBoard(VehicleList.getVehicleListEditTextSearch(),
-                VehicleList.getAddVehicleEditTextHintSearch(),"DDD777");
+        VehicleListPage.checkEditTextHintAndTypeTextAndCloseKeyBoard(VehicleListPage.getVehicleListEditTextSearch(),
+                VehicleListPage.getAddVehicleEditTextHintSearch(),"DDD777");
 
         //Then
-        VehicleList.toastView(VehicleList.getAddVehicleMessageListEmptyToast(),activityRule.getActivity().getWindow().getDecorView());
+        VehicleListPage.toastView(VehicleListPage.getAddVehicleMessageListEmptyToast(),activityRule.getActivity().getWindow().getDecorView());
     }
 
     @Test
     public void leaveCarFromParkingAndRemoveToVehicleListSuccessfulTest(){
         //Given
-        Home.clicked(Home.getHomeButtonAddVehicle());
+        HomePage.clicked(HomePage.getHomeButtonAddVehicle());
 
-        AddVehicle.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehicle.getAddVehicleEditTextPlate(),
-                AddVehicle.getAddVehicleEditTextHintPlate(),"AAA112");
-        AddVehicle.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehicle.getAddVehicleEditTextCylinderCapacity(),
-                AddVehicle.getAddVehicleEditTextHintCylinderCapacity(),"1500");
-        AddVehicle.clicked(AddVehicle.getAddVehicleRadioButtonCar());
-        AddVehicle.checked(AddVehicle.getAddVehicleRadioButtonCar());
-        AddVehicle.notChecked(AddVehicle.getAddVehicleRadioButtonMotorcycle());
+        AddVehiclePage.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehiclePage.getAddVehicleEditTextPlate(),
+                AddVehiclePage.getAddVehicleEditTextHintPlate(),"AAA112");
+        AddVehiclePage.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehiclePage.getAddVehicleEditTextCylinderCapacity(),
+                AddVehiclePage.getAddVehicleEditTextHintCylinderCapacity(),"1500");
+        AddVehiclePage.clicked(AddVehiclePage.getAddVehicleRadioButtonCar());
+        AddVehiclePage.checked(AddVehiclePage.getAddVehicleRadioButtonCar());
+        AddVehiclePage.notChecked(AddVehiclePage.getAddVehicleRadioButtonMotorcycle());
 
-        AddVehicle.clicked(AddVehicle.getAddVehicleButtonAccept());
+        AddVehiclePage.clicked(AddVehiclePage.getAddVehicleButtonAccept());
 
-        AddVehicle.toastView(AddVehicle.getAddVehicleMessageToast(),activityRule.getActivity().getWindow().getDecorView());
+        AddVehiclePage.toastView(AddVehiclePage.getAddVehicleMessageToast(),activityRule.getActivity().getWindow().getDecorView());
 
-        Home.clicked(Home.getHomeButtonShowVehicleList());
+        HomePage.clicked(HomePage.getHomeButtonShowVehicleList());
 
-        VehicleList.checkEditTextHintAndTypeTextAndCloseKeyBoard(VehicleList.getVehicleListEditTextSearch(),
-                VehicleList.getAddVehicleEditTextHintSearch(),"AAA112");
+        VehicleListPage.checkEditTextHintAndTypeTextAndCloseKeyBoard(VehicleListPage.getVehicleListEditTextSearch(),
+                VehicleListPage.getAddVehicleEditTextHintSearch(),"AAA112");
 
-        VehicleList.checkedRecyclerViewItemDisplay(VehicleList.getVehicleListRecyclerView(),0, "AAA112");
+        VehicleListPage.checkedRecyclerViewItemDisplay(VehicleListPage.getVehicleListRecyclerView(),0, "AAA112");
 
-        VehicleList.clickItemComponentOfRecyclerView(VehicleList.getVehicleListRecyclerView(),
-                VehicleList.getVehicleListItemComponentRecyclerView(),0);
+        VehicleListPage.clickItemComponentOfRecyclerView(VehicleListPage.getVehicleListRecyclerView(),
+                VehicleListPage.getVehicleListItemComponentRecyclerView(),0);
 
-        ConfirmVehicleDeparture.displayedInView(ConfirmVehicleDeparture.getDialogFragmentTittle());
+        ConfirmVehicleDeparturePage.displayedInView(ConfirmVehicleDeparturePage.getDialogFragmentTittle());
 
         //When
-        ConfirmVehicleDeparture.clicked(ConfirmVehicleDeparture.getDialogFragmentButtonAccept());
+        ConfirmVehicleDeparturePage.clicked(ConfirmVehicleDeparturePage.getDialogFragmentButtonAccept());
 
         //Then
-        VehicleList.checkedRecyclerViewItemNotDisplay(VehicleList.getVehicleListRecyclerView(),0, "ZZZ999");
+        VehicleListPage.checkedRecyclerViewItemNotDisplay(VehicleListPage.getVehicleListRecyclerView(),0, "ZZZ999");
     }
 }

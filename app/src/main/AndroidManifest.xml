@@ -10,15 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentations.Home.HomeActivity">
+        <activity android:name=".presentations.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentations.AddVehicle.AddVehicleActivity"/>
-        <activity android:name=".presentations.VehicleList.VehicleListActivity"/>
+        <activity android:name=".presentations.addVehicle.AddVehicleActivity"/>
+        <activity android:name=".presentations.vehicleList.VehicleListActivity"/>
     </application>
 
 </manifest>

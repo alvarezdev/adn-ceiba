@@ -1,5 +1,4 @@
-package ceiba.adn.parking.presentations.AddVehicle;
-import android.util.Log;
+package ceiba.adn.parking.presentations.addVehicle;
 
 import androidx.lifecycle.ViewModel;
 
