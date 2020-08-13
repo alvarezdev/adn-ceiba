@@ -18,6 +18,7 @@ import ceiba.adn.parking.R;
 import ceiba.adn.parking.domains.exceptions.BusinessException;
 import ceiba.adn.parking.dtos.VehicleDto;
 import ceiba.adn.parking.enums.VehicleType;
+import ceiba.adn.parking.presentations.BaseApplication;
 
 public class AddVehicleActivity extends AppCompatActivity {
 
@@ -41,6 +42,7 @@ public class AddVehicleActivity extends AppCompatActivity {
 
     private void initComponent() {
         addVehicleViewModel = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(AddVehicleViewModel.class);
+        addVehicleViewModel.setParkingDomain((((BaseApplication)getApplication()).getParkingDomain()));
         plate = findViewById(R.id.input_plate);
         cylinderCapacity = findViewById(R.id.input_cylinder_capacity);
         vehicleGroup = findViewById(R.id.radio_group_vehicle);

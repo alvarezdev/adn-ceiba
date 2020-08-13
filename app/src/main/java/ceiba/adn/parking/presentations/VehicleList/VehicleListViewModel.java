@@ -11,11 +11,13 @@ import ceiba.adn.parking.dtos.VehicleDto;
 
 public class VehicleListViewModel extends ViewModel {
 
-    @Inject
-    public ParkingDomain parkingDomain;
+    private ParkingDomain parkingDomain;
 
     public VehicleListViewModel() {
-        parkingDomain = new ParkingDomain();
+    }
+
+    public void setParkingDomain(ParkingDomain parkingDomain){
+        this.parkingDomain = parkingDomain;
     }
 
     public List<VehicleDto> getUserList() {

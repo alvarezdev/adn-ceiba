@@ -4,7 +4,7 @@ import java.util.List;
 
 import ceiba.adn.parking.dtos.VehicleDto;
 
-public interface VehicleDaoImpl {
+public interface VehicleDao {
     void addVehicle(VehicleDto vehicleDto);
     VehicleDto getVehicle(String plate);
     List<VehicleDto> getListVehicle();

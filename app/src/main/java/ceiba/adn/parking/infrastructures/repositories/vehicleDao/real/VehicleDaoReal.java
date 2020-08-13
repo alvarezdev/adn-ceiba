@@ -4,18 +4,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import ceiba.adn.parking.dtos.VehicleDto;
 import ceiba.adn.parking.enums.VehicleType;
 import ceiba.adn.parking.infrastructures.repositories.entities.VehicleEntity;
-import ceiba.adn.parking.contracts.VehicleDaoImpl;
+import ceiba.adn.parking.contracts.VehicleDao;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-public class VehicleDaoDaoReal implements VehicleDaoImpl {
+public class VehicleDaoReal implements VehicleDao {
 
     Realm realm;
-
-    public VehicleDaoDaoReal() {
+    @Inject
+    public VehicleDaoReal() {
         realm = Realm.getDefaultInstance();
     }
 

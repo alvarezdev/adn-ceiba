@@ -3,14 +3,16 @@ package ceiba.adn.parking.infrastructures.repositories.vehicleDao.mock;
 import java.util.ArrayList;
 import java.util.List;
 
-import ceiba.adn.parking.dtos.VehicleDto;
-import ceiba.adn.parking.contracts.VehicleDaoImpl;
+import javax.inject.Inject;
 
-public class VehicleDaoDaoMock implements VehicleDaoImpl {
+import ceiba.adn.parking.dtos.VehicleDto;
+import ceiba.adn.parking.contracts.VehicleDao;
+
+public class VehicleDaoMock implements VehicleDao {
 
     List<VehicleDto> vehicleList;
-
-    public VehicleDaoDaoMock() {
+    @Inject
+    public VehicleDaoMock() {
         vehicleList = new ArrayList<>();
     }
 

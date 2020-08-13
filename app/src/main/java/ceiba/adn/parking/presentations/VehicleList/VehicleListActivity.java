@@ -14,7 +14,9 @@ import java.util.Date;
 import java.util.List;
 
 import ceiba.adn.parking.R;
+import ceiba.adn.parking.domains.features.parking.ParkingDomain;
 import ceiba.adn.parking.dtos.VehicleDto;
+import ceiba.adn.parking.presentations.BaseApplication;
 import ceiba.adn.parking.presentations.vehicleList.RecyclerElement.VehicleAdapter;
 
 public class VehicleListActivity extends AppCompatActivity {
@@ -34,6 +36,7 @@ public class VehicleListActivity extends AppCompatActivity {
 
     private void initComponent() {
         vehicleListViewModel = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(VehicleListViewModel.class);
+        vehicleListViewModel.setParkingDomain((((BaseApplication)getApplication()).getParkingDomain()));
         inputSearch = findViewById(R.id.input_search);
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override

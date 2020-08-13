@@ -60,7 +60,7 @@ public class ParkingDomainTextAux {
         List<VehicleDto> vehicleDtoList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             VehicleDto vehicleDto = new VehicleDto();
-            vehicleDto.setPlate("ABC10" + i);
+            vehicleDto.setPlate("ZBC10" + i);
             vehicleDto.setVehicleType(VehicleType.MOTORCYCLE);
             vehicleDto.setCylinderCapacity(100);
             vehicleDto.setVehicleEntryTime(new Date());

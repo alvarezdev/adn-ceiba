@@ -21,7 +21,7 @@ public class ParkingTest {
             new ActivityTestRule<>(HomeActivity.class);
 
     @Test
-    public void enterCarParkingAndSuccessMessageTest(){
+    public void enterParking_EnterCarParkingAndMessageInToastSuccess_Test(){
         //Given
         HomePage.clicked(HomePage.getHomeButtonAddVehicle());
         AddVehiclePage.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehiclePage.getAddVehicleEditTextPlate(),
@@ -40,7 +40,7 @@ public class ParkingTest {
     }
 
     @Test
-    public void enterMotorcycleParkingAndSuccessMessageTest(){
+    public void enterParking_EnterMotorcycleParkingAndMessageInToastSuccess_Test(){
         //Given
         HomePage.clicked(HomePage.getHomeButtonAddVehicle());
         AddVehiclePage.checkEditTextHintAndTypeTextAndCloseKeyBoard(AddVehiclePage.getAddVehicleEditTextPlate(),
@@ -59,7 +59,7 @@ public class ParkingTest {
     }
 
     @Test
-    public void fillFailedFieldsWhenEnterVehicleParkingAndDisplayErrorMessageTest(){
+    public void enterParking_fillFailedFieldsWhenEnterCarParkingAndDisplayMessageInToastError_Test(){
         //Given
         HomePage.clicked(HomePage.getHomeButtonAddVehicle());
 
@@ -78,7 +78,7 @@ public class ParkingTest {
     }
 
     @Test
-    public void searchPlateFailedResultsAndEmptyListMessageTest(){
+    public void searchPlate_FailedResultsAndEmptyListMessage_Test(){
         //Given
         HomePage.clicked(HomePage.getHomeButtonShowVehicleList());
 
@@ -91,7 +91,7 @@ public class ParkingTest {
     }
 
     @Test
-    public void leaveCarFromParkingAndRemoveToVehicleListSuccessfulTest(){
+    public void leaveVehicle_LeaveCarFromParkingAndRemoveToVehicleListSuccessful_Test(){
         //Given
         HomePage.clicked(HomePage.getHomeButtonAddVehicle());
 

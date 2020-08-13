@@ -7,26 +7,15 @@ import org.junit.Test;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-
-import javax.inject.Inject;
-
 import ceiba.adn.parking.domains.exceptions.BusinessException;
 import ceiba.adn.parking.domains.exceptions.DataBaseException;
-import ceiba.adn.parking.domains.features.parking.ParkingDomain;
 import ceiba.adn.parking.dtos.VehicleDto;
 import ceiba.adn.parking.enums.VehicleType;
 
-public class ParkingDomainTest {
-
-    @Inject
-    public ParkingDomain parkingDomain;
-
-    public ParkingDomainTextAux parkingDomainTextAux;
+public class ParkingDomainTest extends BaseTest {
 
     @Before
     public void setUp() {
-        parkingDomainTextAux = new ParkingDomainTextAux();
-        parkingDomain = new ParkingDomain();
         parkingDomain.deleteAll();
     }
 
@@ -201,7 +190,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterParking_EnterCarWhenParkingNotHaveCapacityForCarsBusinessExceptionTest() throws BusinessException {
+    public void enterParking_EnterCarWhenParkingNotHaveCapacityForCars_BusinessException_Test() throws BusinessException {
         //Arrenge
         for (VehicleDto vehicle : parkingDomainTextAux.createListCar()) {
             parkingDomain.enterParking(vehicle);
@@ -210,7 +199,7 @@ public class ParkingDomainTest {
         try {
             //Act
             VehicleDto vehicleDto = new VehicleDto();
-            vehicleDto.setPlate("ABC500");
+            vehicleDto.setPlate("ZBC500");
             vehicleDto.setVehicleType(VehicleType.CAR);
             vehicleDto.setCylinderCapacity(1500);
             vehicleDto.setVehicleEntryTime(new Date());
@@ -224,7 +213,7 @@ public class ParkingDomainTest {
     }
 
     @Test
-    public void enterParking_enterMotorcycleWhenParkingNotHaveCapacityForMotorcyclesBusinessExceptionTest() throws BusinessException {
+    public void enterParking_enterMotorcycleWhenParkingNotHaveCapacityForMotorcycles_BusinessException_Test() throws BusinessException {
         //Arrenge
         for (VehicleDto vehicle : parkingDomainTextAux.createListMotorCycle()) {
             parkingDomain.enterParking(vehicle);
@@ -233,7 +222,7 @@ public class ParkingDomainTest {
         try {
             //Act
             VehicleDto vehicleDto = new VehicleDto();
-            vehicleDto.setPlate("ABC900");
+            vehicleDto.setPlate("ZBC900");
             vehicleDto.setVehicleType(VehicleType.MOTORCYCLE);
             vehicleDto.setCylinderCapacity(300);
             vehicleDto.setVehicleEntryTime(new Date());
