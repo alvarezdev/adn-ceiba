@@ -123,6 +123,6 @@ public class ParkingTest {
         ConfirmVehicleDeparturePage.clicked(ConfirmVehicleDeparturePage.getDialogFragmentButtonAccept());
 
         //Then
-        VehicleListPage.checkedRecyclerViewItemNotDisplay(VehicleListPage.getVehicleListRecyclerView(),0, "ZZZ999");
+        VehicleListPage.checkedRecyclerViewItemNotDisplay(VehicleListPage.getVehicleListRecyclerView(),0, "AAA112");
     }
 }

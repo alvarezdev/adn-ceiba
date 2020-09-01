@@ -385,7 +385,7 @@ public class ParkingDomainTest extends BaseTest {
         parkingDomain.leaveVehicle(vehicleDto);
 
         try {
-            //Act
+
             parkingDomain.getVehicle(vehicleDto.getPlate());
             Assert.fail();
         }catch (Exception e){

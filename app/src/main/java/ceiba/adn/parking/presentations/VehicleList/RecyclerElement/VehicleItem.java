@@ -20,7 +20,6 @@ public class VehicleItem extends RecyclerView.ViewHolder {
     private TextView entryTime;
     public Button leave;
 
-
     public VehicleItem(@NonNull View itemView) {
         super(itemView);
         plate = itemView.findViewById(R.id.plate);
